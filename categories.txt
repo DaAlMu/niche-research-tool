@@ -1,0 +1,12 @@
+# Stage 1: broad categories (German market). Google Trends needs broad terms to have data.
+# The first term is the anchor that all others are compared against.
+holzdeko
+holzgeschenk
+personalisierte geschenke
+schneidebrett
+wandregal
+schlüsselbrett
+holzschild
+untersetzer
+holzspielzeug
+lasergravur

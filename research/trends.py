@@ -7,12 +7,13 @@ Usage: python -m research.trends [--geo DE] [--timeframe "today 5-y"]
 import argparse
 import time
 from datetime import date
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 from pytrends.request import TrendReq
 
-from research.common import DATA_DIR, load_keywords
+from research.common import DATA_DIR, KEYWORDS_FILE, load_keywords
 
 BATCH_SIZE = 5  # Google Trends compares at most 5 terms per request
 ANCHOR_INDEX = 0  # first keyword is repeated in every batch to make batches comparable
@@ -55,10 +56,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--geo", default="DE", help="country code, or 'world' for worldwide")
     parser.add_argument("--timeframe", default="today 5-y")
+    parser.add_argument("--keywords", type=Path, default=KEYWORDS_FILE, help="term list to use")
     args = parser.parse_args()
     geo = "" if args.geo.lower() == "world" else args.geo
 
-    interest = fetch_interest(load_keywords(), geo, args.timeframe)
+    interest = fetch_interest(load_keywords(args.keywords), geo, args.timeframe)
     sparse = interest.columns[(interest > 0).mean() < MIN_NONZERO_SHARE]
     if len(sparse):
         print(f"Warning: too little search volume in '{args.geo}' for: {', '.join(sparse)}.")
