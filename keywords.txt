@@ -1,0 +1,10 @@
+# One search term per line. Lines starting with # are ignored.
+# Use the language of the market you want to sell in (default: Germany).
+schneidebrett personalisiert
+handyhalter holz
+schlüsselbrett holz
+untersetzer holz
+kopfhörerständer holz
+schreibtisch organizer holz
+wandregal holz
+türschild holz
